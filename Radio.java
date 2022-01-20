@@ -1,4 +1,3 @@
-
 /**
  * Defines all the methods that a Radio should have.
  */
@@ -38,11 +37,11 @@ public interface Radio {
      * Get a saved station on the favorites array
      * @param position index indicating which station to pick.
      */
-    public double getSavedStation(int position);
-    /**
-     * Get the current frequency. And also save it as the current station.
-     * @return boolean indicating if it is AM or FM. true = AM.
-     */
+//    public double getSavedStation(int position);
+//    /**
+//     * Get the current frequency. And also save it as the current station.
+//     * @return boolean indicating if it is AM or FM. true = AM.
+//     */
     public boolean getFrequency();
     /**
      * Switch the frequency selected.
