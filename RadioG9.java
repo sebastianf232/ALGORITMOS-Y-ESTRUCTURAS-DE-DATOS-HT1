@@ -3,8 +3,8 @@
  * Universidad del Valle de Guatemala
  * Hoja de Trabajo No.1
  * File: RadioG9
- * @author Sebasti·n Franco - 21484
- * @author Nicolle Escobar - 
+ * @author Sebasti√°n Franco - 21484
+ * @author Nicolle Escobar - 20647
  * @author Luis Montenegro - 21699
  */
 
