@@ -7,8 +7,10 @@
  * @author Nicolle Escobar - 20647
  * @author Luis Montenegro - 21699
  */
+import java.util.ArrayList;
 
 public class RadioG9 implements Radio{
+    private ArrayList<Double> guardados = new ArrayList<Double>();
     private boolean frequency;
     private int position;
     private double station;
@@ -57,7 +59,25 @@ public class RadioG9 implements Radio{
     
     
     public void prevStation(boolean frequency){
+        if(frequency){
+            if(am == 530){
+                am = 1610;
+            }
+            else{
+                am -= 10;
+                am = Math.round(am);
+            }
+        }   
+        else{
+            if(fm == 87.9){
+                fm = 107.09;
+            }
+            else{
+                fm -= 0.2;
+                fm = Math.round(fm*100.0)/100.0;
+            }
 
+        }
     }
 
     public double getStation(){
@@ -68,14 +88,14 @@ public class RadioG9 implements Radio{
     
    
     public void saveStation(int position, double station){
-
+        guardados.add(position, station);
     }
 
-//    public double getSavedStation(int position){
-//       station = this.guardados[position];
-//        frequency = station > 200;
-//        return station;
-//    }
+    public double getSavedStation(int position){
+        station = guardados.get(position);
+        frequency = station > 200;
+        return station;
+    }
 
     public boolean getFrequency(){
         return frequency;
