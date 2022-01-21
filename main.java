@@ -12,7 +12,7 @@ public class main {
 						
 			
 			while(true) {
-				System.out.println("Menú");
+				System.out.println("Menu");
 				System.out.println("1. Encender");
 				System.out.println("2. Cambiar de frecuencia");
 				System.out.println("3. Siguiente emisora");
@@ -23,7 +23,7 @@ public class main {
 				int opcion = scn.nextInt();				
 				scn.nextLine();
 				
-				
+				/**Opcion que permite encender la Radio. */
 				if (opcion == 1) {
 					if(radio.isOn() == false) {
 						radio.turnOnOff();
@@ -31,10 +31,11 @@ public class main {
 					}
 					
 					else if(radio.isOn() == true) {
-						System.out.println("El dispositivo ya está encendido");
+						System.out.println("El dispositivo ya esta encendido");
 					}
 				}
 				
+				/** OpciÃ³n que permite cambiar la frecuencia. */
 				else if (opcion == 2) {
 					if(radio.isOn() == true) {
 						radio.switchAMFM();
@@ -48,10 +49,11 @@ public class main {
 					}
 					
 					else if(radio.isOn() == false) {
-						System.out.println("El dispositivo está apagado");
+						System.out.println("El dispositivo esta apagado");
 					}
 				}
 				
+				/** OpciÃ³n que permite avanzar de estaciÃ³n. */
 				else if (opcion == 3) {
 					if(radio.isOn() == true) {
 						radio.nextStation(radio.getFrequency());
@@ -59,7 +61,52 @@ public class main {
 					}
 					
 					else if (radio.isOn() == false) {
-						System.out.println("El dispositivo está apagado");
+						System.out.println("El dispositivo esta apagado");
+					}
+				}
+
+				/**Opcion que permite regresar de estaciÃ³n. */
+				else if (opcion == 4){
+					if(radio.isOn() == true) {
+						radio.prevStation(radio.getFrequency());
+						System.out.println(radio.getStation());
+					}
+					else if(radio.isOn() == false) {
+						System.out.println("El dispositivo esta apagado");
+					}
+				}
+
+				/**Opcion que permite guardar la emisora. */
+				else if (opcion == 5){
+					if(radio.isOn() == true) {
+						radio.saveStation();
+						System.out.println(radio.getStation());
+					}
+					else if(radio.isOn() == false) {
+						System.out.println("El dispositivo esta apagado");
+					}
+				}
+
+				/**Opcion que permite ver las emisoras. */
+				else if (opcion == 6){
+					if(radio.isOn() == true) {
+						radio.getSavedStation();
+						System.out.println(radio.getSavedStation(position));
+					}
+					else if(radio.isOn() == false) {
+						System.out.println("El dispositivo esta apagado");
+					}
+				}
+
+				/**Opcion que permite apagar la Radio. */
+				else if (opcion == 7){
+					if(radio.isOn() == true) {
+						radio.turnOnOff();
+						System.out.println("La Radio ha sido apagada.");
+					}
+					
+					else if(radio.isOn() == false) {
+						System.out.println("El dispositivo ya esta apagado.");
 					}
 				}
 				
@@ -68,7 +115,7 @@ public class main {
 			
 	
 		}catch(Exception ie) {
-			System.out.println("Ocurrió un error");
+			System.out.println("Ocurriï¿½ un error");
 		}
 		
 	}
