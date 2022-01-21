@@ -21,7 +21,7 @@ public class main {
 			RadioG9 radio = new RadioG9();
 			Vista vista = new Vista();
 			boolean terminado = false;
-			boolean ciclo = false;
+			boolean ciclo = true;
 
 			try {
 			while(!terminado) {
@@ -109,13 +109,14 @@ public class main {
 									radio.saveStation(position, radio.getStation());
 									System.out.println(radio.getSavedStation(position));
 									ciclo = true;
+									
 								}
 								
 								}
 								catch(InputMismatchException IME){
 									vista.errorDeIngreso();
 								}
-						} while (ciclo);
+						} while (!ciclo);
 							
 						}
 						else if(radio.isOn() == false){
@@ -140,13 +141,14 @@ public class main {
 									else{
 										radio.getSavedStation(position);
 										System.out.println(radio.getSavedStation(position));
+										ciclo = true;
 									}
 									
 								}
 								catch (InputMismatchException e) {
 									vista.errorDeIngreso();
 								}
-							} while (ciclo);
+							} while (!ciclo);
 
 						}
 
