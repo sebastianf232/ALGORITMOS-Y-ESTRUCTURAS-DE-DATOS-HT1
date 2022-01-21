@@ -79,8 +79,10 @@ public class main {
 				/**Opcion que permite guardar la emisora. */
 				else if (opcion == 5){
 					if(radio.isOn() == true) {
-						radio.saveStation();
-						System.out.println(radio.getStation());
+						System.out.println("Escoja un numero de 1-12 para guardar la emisora.");
+						int a = scn.nextInt();
+						radio.saveStation(a, radio.getStation());
+						System.out.println("Se ha guardado la estación.");
 					}
 					else if(radio.isOn() == false) {
 						System.out.println("El dispositivo esta apagado");
@@ -90,8 +92,10 @@ public class main {
 				/**Opcion que permite ver las emisoras. */
 				else if (opcion == 6){
 					if(radio.isOn() == true) {
-						radio.getSavedStation();
-						System.out.println(radio.getSavedStation(position));
+						System.out.println("Escoja un numero de 1-12 de la emisora que quiere escuchar.");
+						int a = scn.nextInt();
+						radio.getSavedStation(a);
+						System.out.println(radio.getSavedStation(a));
 					}
 					else if(radio.isOn() == false) {
 						System.out.println("El dispositivo esta apagado");
@@ -115,7 +119,7 @@ public class main {
 			
 	
 		}catch(Exception ie) {
-			System.out.println("Ocurri� un error");
+			System.out.println("Ocurrio un error, intente de nuevo.");
 		}
 		
 	}
