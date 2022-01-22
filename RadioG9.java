@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class RadioG9 implements Radio{
     private ArrayList<Double> guardados = new ArrayList<Double>();
     private boolean frequency;
-    private int position;
     private double station;
     private boolean onOff;
     private double am;
@@ -88,13 +87,17 @@ public class RadioG9 implements Radio{
     
    
     public void saveStation(int position, double station){
-        guardados.add(position, station);
+        if (this.frequency){
+            this.guardados.add(position, this.station);
+            System.out.println("Se ha guardado la emisora " + this.station);
+        }
     }
 
     public double getSavedStation(int position){
         station = guardados.get(position);
         frequency = station > 200;
         return station;
+        
     }
 
     public boolean getFrequency(){
@@ -111,3 +114,4 @@ public class RadioG9 implements Radio{
     }
 
 }
+
