@@ -107,7 +107,6 @@ public class main {
 
 								else{
 									radio.saveStation(position, radio.getStation());
-									System.out.println(radio.getSavedStation(position));
 									ciclo = true;
 									
 								}
@@ -131,10 +130,10 @@ public class main {
 						if(radio.isOn() == true){
 							System.out.println("Indique la posición de la emisora que desea poner " + 
 							"en un intervalo de 1 - 12: ");
+							int position = vista.input();
 							//verificar que el número esté en el intervalo y que no se ingrese un símbolo incorrecto
 							do {
 								try {
-									int position = vista.input();
 									if(position>12){
 										vista.errorDeIngreso();
 									}
