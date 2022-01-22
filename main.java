@@ -17,12 +17,13 @@ import java.util.InputMismatchException;
 public class main {
 
 	public static void main(String args[]) {
-		//try {
+		
 			RadioG9 radio = new RadioG9();
 			Vista vista = new Vista();
 			boolean terminado = false;
 			boolean ciclo = true;
-
+		try {
+			
 			try {
 			while(!terminado) {
 				//para importar el Scanner desde la vista
@@ -101,12 +102,13 @@ public class main {
 						do {
 							try{
 								int position = vista.input();
-								if(position>12){
+								if(position>=12){
 									vista.errorDeIngreso();
 								}
 
 								else{
 									radio.saveStation(position, radio.getStation());
+									System.out.println("La emisora es: " + radio.getSavedStation(position) + "\n");
 									ciclo = true;
 									
 								}
@@ -130,22 +132,26 @@ public class main {
 						if(radio.isOn() == true){
 							System.out.println("Indique la posición de la emisora que desea poner " + 
 							"en un intervalo de 1 - 12: ");
-							int position = vista.input();
 							//verificar que el número esté en el intervalo y que no se ingrese un símbolo incorrecto
 							do {
 								try {
-									if(position>12){
+									int position = vista.input();
+									if(position>=12){
 										vista.errorDeIngreso();
 									}
 									else{
 										radio.getSavedStation(position);
-										System.out.println(radio.getSavedStation(position));
+										System.out.println("La emisora es: " + radio.getSavedStation(position) + "\n");
 										ciclo = true;
+
+										
+
 									}
 									
 								}
 								catch (InputMismatchException e) {
 									vista.errorDeIngreso();
+									
 								}
 							} while (!ciclo);
 
@@ -160,13 +166,7 @@ public class main {
 					/**Opción para apagar el radio */
 					/********************************************/
 					case 7:
-						if(radio.isOn() == true) {
-							radio.turnOnOff();
-						}
-						else{
-							vista.apagado();
-						}
-						
+						radio.turnOnOff();
 					break;
 					/********************************************/
 					/**Opción para finalizar el programa */
@@ -187,8 +187,12 @@ public class main {
 		catch (InputMismatchException e) {
 			vista.errorDeIngreso();
 		}	
-			
-		//}catch(Exception e) {System.out.println("Ha ocurrido un error");}
+
+	} 
+	catch (IndexOutOfBoundsException IOB) {
+		vista.outOfBounds();
+	}
+		
 		
 	}
 

@@ -6,18 +6,21 @@
  * @author Sebastián Franco - 21484
  * @author Nicolle Escobar - 20647
  * @author Luis Montenegro - 21699
+ * @version 1.1
+ * @since 21/21/2022
  */
 import java.util.ArrayList;
+import java.util.List;
+
+
 
 public class RadioG9 implements Radio{
-    private ArrayList<Double> guardados = new ArrayList<Double>();
-    private boolean frequency;
-    private double station;
-    private boolean onOff;
-    private double am;
-    private double fm;
 
-    
+
+    private static List<Double> guardados = new ArrayList<Double>();
+    private boolean frequency, onOff;
+    private double am, fm, station;
+
     /**
      * Constructor de la clase.
      */
@@ -87,16 +90,16 @@ public class RadioG9 implements Radio{
     
    
     public void saveStation(int position, double station){
-        if (this.frequency){
-            this.guardados.add(position, this.station);
-            System.out.println("Se ha guardado la emisora " + this.station);
-        }
+        filler();
+        guardados.set(position, station); 
+        
     }
 
     public double getSavedStation(int position){
+        filler();
         station = guardados.get(position);
-        frequency = station > 200;
         return station;
+        
         
     }
 
@@ -113,5 +116,16 @@ public class RadioG9 implements Radio{
 		}
     }
 
+    
+    /**********************************************************************/
+    /**Método para llenar el ArrayList previamente a ejecutar el programa */
+    /**********************************************************************/ 
+    private static void filler(){
+        //se llena previamente para evitar el IndexOutOfBoundsException
+        //cuando se intenta acceder a un índice distinto de 0
+        for(double i = 0; i <= 12; i++){
+            guardados.add(i);
+        }
+    }
+    
 }
-
