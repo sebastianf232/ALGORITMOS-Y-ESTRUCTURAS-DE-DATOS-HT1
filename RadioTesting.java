@@ -8,7 +8,7 @@ public class RadioTesting {
 
 	@Test
 	/**
-	 * Comprobar en quÈ estaciÛn
+	 * Comprobar en qu√© estaci√≥n
 	 * se encuentra el radio 
 	 */
 	void nextStation() {
@@ -18,13 +18,21 @@ public class RadioTesting {
 	
 	@Test
 	/**
-	 * Comprobar en quÈ frecuencia
+	 * Comprobar en qu√© frecuencia
 	 * se encuentra el radio
 	 */
 	void nextFrequency() {
 		assertEquals(radio.getFrequency(),true);
 	}
 	
+	@Test
+	/**
+	* Comprobar que el radio est√©
+	* apagado inicialmente
+	*/
+	void isOn(){
+		assertEquals(radio.isOn(), false);
+	}
 	
 	
 
